@@ -1,0 +1,19 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+
+# PyCharm
+.idea/
+
+# Pipenv
+Pipfile.lock
+Pipfile
+
+# Setting
+pybilling/setting.py
+test.py
+.env
+
+# setup
+pybizfly.egg-info
+build
+dist

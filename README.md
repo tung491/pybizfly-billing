@@ -40,6 +40,18 @@ client = pybilling.BizFlyBillingClient(
 )
 ```
 
+hoặc
+
+```python  
+import pybilling
+
+client = pybilling.BizFlyBillingClient(
+    tenant_id='5a72fb63165b4d3fada838da329b94a3',
+    api_url='http://10.5.69.117:8085/api/v4'
+    access_token='gAAAAABf9X2QuVi1tRJAoCt8jypeKRMlQ96q5sZJgW66XtAlkcbw8aAySJVLzcPHBqZEE8S1RrgYIMf5GsjJ38Tu8gaGiz_35vbyTOfLEDdsJxLBVcmWoVQJ6GkZ8aaYNz098SL5-6ar1xStpQqxIKPoJ9UOb2_T0m5g8HnN0gxzfKmTP9vzIWk'
+)
+```
+
 <h2 id="tính-năng">Tính năng</h2>
 
 PyBizfly hỗ trợ tất cả các tính năng được cung cấp

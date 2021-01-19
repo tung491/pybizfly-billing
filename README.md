@@ -27,7 +27,7 @@ import pybilling
 
 client = pybilling.BizFlyBillingClient(
     tenant_id='5a72fb63165b4d3fada838da329b94a3',
-    api_url='http://10.5.69.117:8085/api/v4'
+    api_url='https://dev-billing.bizflycloud.vn'
     config={
         "OPENSTACK_AUTH_URL": "",
         "KEYSTONE_TENANT_ADMIN": "",
@@ -47,7 +47,7 @@ import pybilling
 
 client = pybilling.BizFlyBillingClient(
     tenant_id='5a72fb63165b4d3fada838da329b94a3',
-    api_url='http://10.5.69.117:8085/api/v4'
+    api_url='https://dev-billing.bizflycloud.vn'
     access_token='gAAAAABf9X2QuVi1tRJAoCt8jypeKRMlQ96q5sZJgW66XtAlkcbw8aAySJVLzcPHBqZEE8S1RrgYIMf5GsjJ38Tu8gaGiz_35vbyTOfLEDdsJxLBVcmWoVQJ6GkZ8aaYNz098SL5-6ar1xStpQqxIKPoJ9UOb2_T0m5g8HnN0gxzfKmTP9vzIWk'
 )
 ```
@@ -101,7 +101,7 @@ import pybilling
 
 client = pybilling.BizFlyBillingClient(
     tenant_id='5a72fb63165b4d3fada838da329b94a3',
-    api_url='http://10.5.69.117:8085/api/v4'
+    api_url='https://dev-billing.bizflycloud.vn'
 )
 
 subscription_service = client.subscription()
@@ -115,7 +115,7 @@ import pybilling
 
 client = pybilling.BizFlyBillingClient(
     tenant_id='5a72fb63165b4d3fada838da329b94a3',
-    api_url='http://10.5.69.117:8085/api/v4'
+    api_url='https://dev-billing.bizflycloud.vn'
 )
 
 subscription_service = client.subscription()
@@ -128,7 +128,7 @@ import pybilling
 
 client = pybilling.BizFlyBillingClient(
     tenant_id='5a72fb63165b4d3fada838da329b94a3',
-    api_url='http://10.5.69.117:8085/api/v4'
+    api_url='https://dev-billing.bizflycloud.vn'
 )
 
 subscription_service = client.subscription()
@@ -141,7 +141,7 @@ import pybilling
 
 client = pybilling.BizFlyBillingClient(
     tenant_id='5a72fb63165b4d3fada838da329b94a3',
-    api_url='http://10.5.69.117:8085/api/v4'
+    api_url='https://dev-billing.bizflycloud.vn'
 )
 
 subscription_service = client.subscription()
@@ -153,7 +153,7 @@ import pybilling
 
 client = pybilling.BizFlyBillingClient(
     tenant_id='5a72fb63165b4d3fada838da329b94a3',
-    api_url='http://10.5.69.117:8085/api/v4'
+    api_url='https://dev-billing.bizflycloud.vn'
 )
 
 subscription_service = client.subscription()
@@ -167,7 +167,7 @@ import pybilling
 
 client = pybilling.BizFlyBillingClient(
     tenant_id='5a72fb63165b4d3fada838da329b94a3',
-    api_url='http://10.5.69.117:8085/api/v4'
+    api_url='https://dev-billing.bizflycloud.vn'
 )
 
 subscription_service = client.subscription()
@@ -181,7 +181,7 @@ import pybilling
 
 client = pybilling.BizFlyBillingClient(
     tenant_id='5a72fb63165b4d3fada838da329b94a3',
-    api_url='http://10.5.69.117:8085/api/v4'
+    api_url='https://dev-billing.bizflycloud.vn'
 )
 
 subscription_service = client.subscription()

@@ -101,7 +101,8 @@ import pybilling
 
 client = pybilling.BizFlyBillingClient(
     tenant_id='5a72fb63165b4d3fada838da329b94a3',
-    api_url='https://dev-billing.bizflycloud.vn'
+    api_url='https://dev-billing.bizflycloud.vn',
+    access_token='gAAAAABf9X2QuVi1tRJAoCt8jypeKRMlQ96q5sZJgW66XtAlkcbw8aAySJVLzcPHBqZEE8S1RrgYIMf5GsjJ38Tu8gaGiz_35vbyTOfLEDdsJxLBVcmWoVQJ6GkZ8aaYNz098SL5-6ar1xStpQqxIKPoJ9UOb2_T0m5g8HnN0gxzfKmTP9vzIWk'
 )
 
 subscription_service = client.subscription()
@@ -115,7 +116,8 @@ import pybilling
 
 client = pybilling.BizFlyBillingClient(
     tenant_id='5a72fb63165b4d3fada838da329b94a3',
-    api_url='https://dev-billing.bizflycloud.vn'
+    api_url='https://dev-billing.bizflycloud.vn',
+    access_token='gAAAAABf9X2QuVi1tRJAoCt8jypeKRMlQ96q5sZJgW66XtAlkcbw8aAySJVLzcPHBqZEE8S1RrgYIMf5GsjJ38Tu8gaGiz_35vbyTOfLEDdsJxLBVcmWoVQJ6GkZ8aaYNz098SL5-6ar1xStpQqxIKPoJ9UOb2_T0m5g8HnN0gxzfKmTP9vzIWk'
 )
 
 subscription_service = client.subscription()
@@ -128,7 +130,8 @@ import pybilling
 
 client = pybilling.BizFlyBillingClient(
     tenant_id='5a72fb63165b4d3fada838da329b94a3',
-    api_url='https://dev-billing.bizflycloud.vn'
+    api_url='https://dev-billing.bizflycloud.vn',
+    access_token='gAAAAABf9X2QuVi1tRJAoCt8jypeKRMlQ96q5sZJgW66XtAlkcbw8aAySJVLzcPHBqZEE8S1RrgYIMf5GsjJ38Tu8gaGiz_35vbyTOfLEDdsJxLBVcmWoVQJ6GkZ8aaYNz098SL5-6ar1xStpQqxIKPoJ9UOb2_T0m5g8HnN0gxzfKmTP9vzIWk'
 )
 
 subscription_service = client.subscription()
@@ -141,7 +144,8 @@ import pybilling
 
 client = pybilling.BizFlyBillingClient(
     tenant_id='5a72fb63165b4d3fada838da329b94a3',
-    api_url='https://dev-billing.bizflycloud.vn'
+    api_url='https://dev-billing.bizflycloud.vn',
+    access_token='gAAAAABf9X2QuVi1tRJAoCt8jypeKRMlQ96q5sZJgW66XtAlkcbw8aAySJVLzcPHBqZEE8S1RrgYIMf5GsjJ38Tu8gaGiz_35vbyTOfLEDdsJxLBVcmWoVQJ6GkZ8aaYNz098SL5-6ar1xStpQqxIKPoJ9UOb2_T0m5g8HnN0gxzfKmTP9vzIWk'
 )
 
 subscription_service = client.subscription()
@@ -153,7 +157,8 @@ import pybilling
 
 client = pybilling.BizFlyBillingClient(
     tenant_id='5a72fb63165b4d3fada838da329b94a3',
-    api_url='https://dev-billing.bizflycloud.vn'
+    api_url='https://dev-billing.bizflycloud.vn',
+    access_token='gAAAAABf9X2QuVi1tRJAoCt8jypeKRMlQ96q5sZJgW66XtAlkcbw8aAySJVLzcPHBqZEE8S1RrgYIMf5GsjJ38Tu8gaGiz_35vbyTOfLEDdsJxLBVcmWoVQJ6GkZ8aaYNz098SL5-6ar1xStpQqxIKPoJ9UOb2_T0m5g8HnN0gxzfKmTP9vzIWk'
 )
 
 subscription_service = client.subscription()
@@ -167,7 +172,8 @@ import pybilling
 
 client = pybilling.BizFlyBillingClient(
     tenant_id='5a72fb63165b4d3fada838da329b94a3',
-    api_url='https://dev-billing.bizflycloud.vn'
+    api_url='https://dev-billing.bizflycloud.vn',
+    access_token='gAAAAABf9X2QuVi1tRJAoCt8jypeKRMlQ96q5sZJgW66XtAlkcbw8aAySJVLzcPHBqZEE8S1RrgYIMf5GsjJ38Tu8gaGiz_35vbyTOfLEDdsJxLBVcmWoVQJ6GkZ8aaYNz098SL5-6ar1xStpQqxIKPoJ9UOb2_T0m5g8HnN0gxzfKmTP9vzIWk'
 )
 
 subscription_service = client.subscription()
@@ -181,9 +187,10 @@ import pybilling
 
 client = pybilling.BizFlyBillingClient(
     tenant_id='5a72fb63165b4d3fada838da329b94a3',
-    api_url='https://dev-billing.bizflycloud.vn'
+    api_url='https://dev-billing.bizflycloud.vn',
+    access_token='gAAAAABf9X2QuVi1tRJAoCt8jypeKRMlQ96q5sZJgW66XtAlkcbw8aAySJVLzcPHBqZEE8S1RrgYIMf5GsjJ38Tu8gaGiz_35vbyTOfLEDdsJxLBVcmWoVQJ6GkZ8aaYNz098SL5-6ar1xStpQqxIKPoJ9UOb2_T0m5g8HnN0gxzfKmTP9vzIWk'
 )
 
 subscription_service = client.subscription()
-print(subscription_service.upgrade_trial('data_transfer_trial', 'data_tf_01', '2bfe6e25-2a69-40ba-abd9-fa364cbecc7f')
+print(subscription_service.upgrade_trial('data_transfer_trial', 'data_tf_01', '2bfe6e25-2a69-40ba-abd9-fa364cbecc7f'))
 ``` 

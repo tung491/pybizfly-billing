@@ -15,13 +15,29 @@ hoặc thông quan mã nguồn
 
 - Thông tin cấu hình Openstack được sử dụng cho Billing v4.
 - Id của khách hàng (tenant_id)
+- API url của Billing v4
 
 ## Cấu hình
+Các giá trị trong `config` có thể lấy từ môi trường hoặc trực tiếp truyền vào khi khởi tạo client.
+
+Giá trị `api_url` là url api Billing v4. Có thể đặt biến môi trường với khóa là `BILLING_API_URL`. Nếu không, giá trị mặc định là [BILLING API V4](https://billing.bizflycloud.vn/api/v4/)
 
 ```python  
 import pybilling
 
-client = pybilling.BizFlyBillingClient()
+client = pybilling.BizFlyBillingClient(
+    tenant_id='5a72fb63165b4d3fada838da329b94a3',
+    api_url='http://10.5.69.117:8085/api/v4'
+    config={
+        "OPENSTACK_AUTH_URL": "",
+        "KEYSTONE_TENANT_ADMIN": "",
+        "OPENSTACK_DEFAULT_PROJECT_DOMAIN_NAME": "",
+        "KEYSTONE_AUTH_PLUGIN": "",
+        "KEYSTONE_USER_ADMIN": "",
+        "KEYSTONE_PASSWORD_ADMIN": "",
+        "OPENSTACK_DEFAULT_USER_DOMAIN_NAME": "",
+    }
+)
 ```
 
 <h2 id="tính-năng">Tính năng</h2>
@@ -40,11 +56,11 @@ PyBizfly Billing hỗ trợ truy vấn thông tin các kế hoạch sản phẩm
 [⬆ Quay lại Tính năng](#tính-năng)
 
 Ví dụ này biểu diễn cách liệt kê các kế hoạch của của sản phẩm CPU cùng với các quan hệ liên quan.
-
+Tạo client với lựa chọn with_access_token là False cho các request không cần xác thực.
 ```python
 import pybilling
 
-client = pybilling.BizFlyBillingClient()
+client = pybilling.BizFlyBillingClient(with_access_token=False)
 plans = client.plan().list(embedded=['product', 'unit_prices'], filter_str='product.name=@CPU')
 
 print(plans)
@@ -55,7 +71,7 @@ Ví dụ này biểu diễn cách lấy thông tin chi tiết của một kế h
 ```python
 import pybilling
 
-client = pybilling.BizFlyBillingClient()
+client = pybilling.BizFlyBillingClient(with_access_token=False)
 cpu_plan = client.plan().get('07e17db4-6794-4af1-b33g-6fb78c2bf165', embedded=['product', 'unit_prices'])
 
 print(cpu_plan)
@@ -66,16 +82,96 @@ PyBizfly hỗ trợ truy đăng ký, khai báo sử dụng và truy vấn thông
 
 [⬆ Quay lại Tính năng](#tính-năng)
 
-Ví dụ này biểu diễn đăng ký sử dụng tài nguyên sử dụng sản phẩm CPU 2 core premium trong 1 tháng.
+Ví dụ này biểu diễn đăng ký sử dụng tài nguyên sử dụng sản phẩm Machine 20 GB trong 1 tháng.
 
 ```python
 import pybilling
 
-client = pybilling.BizFlyBillingClient()
-subscription = client.subscription().create('cpu-1-month', resource_name='cpu-0001',
-                                            resource_ref='07e17db4-6794-4af1-b33g-6fb78c2bf165',
-                                            quantity=2, action='SUBSCRIBE', category_code='PR')
+client = pybilling.BizFlyBillingClient(
+    tenant_id='5a72fb63165b4d3fada838da329b94a3',
+    api_url='http://10.5.69.117:8085/api/v4'
+)
 
-print(subscription)
+subscription_service = client.subscription()
+print(subscription_service.subscribe('machine_a_month', 'machine_01', '07e17db4-6794-4af1-b33g-6fb78c2bf165'))
 ```   
 
+Ví dụ này biểu diễn cập nhật sử dụng tài nguyên sử dụng sản phẩm Data Tranfer 20 GB trong tháng.
+
+```python
+import pybilling
+
+client = pybilling.BizFlyBillingClient(
+    tenant_id='5a72fb63165b4d3fada838da329b94a3',
+    api_url='http://10.5.69.117:8085/api/v4'
+)
+
+subscription_service = client.subscription()
+print(subscription_service.log('data_transfer', 'machine_01', '07e17db4-6794-4af1-b33g-6fb78c2bf165', 100))
+```   
+
+Ví dụ này biểu diễn kết thúc sử dụng tài nguyên sử dụng sản phẩm Data Tranfer 20 GB trong tháng.
+```python
+import pybilling
+
+client = pybilling.BizFlyBillingClient(
+    tenant_id='5a72fb63165b4d3fada838da329b94a3',
+    api_url='http://10.5.69.117:8085/api/v4'
+)
+
+subscription_service = client.subscription()
+print(subscription_service.close('data_transfer', 'machine_01', '07e17db4-6794-4af1-b33g-6fb78c2bf165'))
+```  
+
+Ví dụ dưới đây biểu diễn truy vấn sử dụng tài nguyên sử dụng sản phẩm Machine của tài khoản cùng với chi tiết sử dụng.
+```python
+import pybilling
+
+client = pybilling.BizFlyBillingClient(
+    tenant_id='5a72fb63165b4d3fada838da329b94a3',
+    api_url='http://10.5.69.117:8085/api/v4'
+)
+
+subscription_service = client.subscription()
+print(subscription_service.get('2bfe6e25-2a69-40ba-abd9-fa364cbecc7f', embedded=['usages']))
+```   
+
+```python
+import pybilling
+
+client = pybilling.BizFlyBillingClient(
+    tenant_id='5a72fb63165b4d3fada838da329b94a3',
+    api_url='http://10.5.69.117:8085/api/v4'
+)
+
+subscription_service = client.subscription()
+print(subscription_service.list(embedded=['usages'], filter_str='plan.name==machine_a_month'))
+```
+
+
+Ví dụ dưới đây biểu diễn cách đổi kế hoạch sản phẩm Data transfer sang dùng thử.
+```python
+import pybilling
+
+client = pybilling.BizFlyBillingClient(
+    tenant_id='5a72fb63165b4d3fada838da329b94a3',
+    api_url='http://10.5.69.117:8085/api/v4'
+)
+
+subscription_service = client.subscription()
+print(subscription_service.switch_plan('data_transfer', 'data_tf_01', '2bfe6e25-2a69-40ba-abd9-fa364cbecc7f',
+                                       switchable_plan_name='data_transfer_trial'))
+``` 
+
+Ví dụ dưới đây biểu diễn cách đổi kế hoạch sản phẩm Data transfer từ dùng thử lên trả phí. 
+```python
+import pybilling
+
+client = pybilling.BizFlyBillingClient(
+    tenant_id='5a72fb63165b4d3fada838da329b94a3',
+    api_url='http://10.5.69.117:8085/api/v4'
+)
+
+subscription_service = client.subscription()
+print(subscription_service.upgrade_trial('data_transfer_trial', 'data_tf_01', '2bfe6e25-2a69-40ba-abd9-fa364cbecc7f')
+``` 

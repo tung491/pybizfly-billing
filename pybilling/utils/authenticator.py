@@ -2,6 +2,7 @@ from pybilling.constants import CREATE
 from .exceptions import (AuthenticationException, BizFlyClientException)
 from .helper import env_or_dict
 from .https import HttpRequest
+from .log import log
 
 
 class Authenticator(object):
@@ -25,6 +26,7 @@ class Authenticator(object):
             user_domain_name = env_or_dict(self._config, 'OPENSTACK_DEFAULT_USER_DOMAIN_NAME')
 
         except ValueError as e:
+            log.error('Authenticated config error. Insert access token or set up authenticated config values.')
             raise BizFlyClientException('Invalid configuration for %s' % str(e))
 
         auth_request_body = {

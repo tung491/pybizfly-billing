@@ -5,7 +5,8 @@ from pybilling.utils.authenticator import Authenticator
 
 
 class BizFlyBillingClient(object):
-    def __init__(self, tenant_id: str = None, access_token: str = None,
+    def __init__(self, tenant_id: str = None,
+                 access_token: str = None, with_access_token: bool = True,
                  api_url: str = None, config: dict = None):
         load_dotenv()
         self.__tenant_id = tenant_id
@@ -13,7 +14,7 @@ class BizFlyBillingClient(object):
         self.__api_url = api_url
         self.__authenticator = Authenticator(config)
 
-        if not access_token:
+        if not access_token and with_access_token:
             access_token = self.__authorize()
         self.__access_token = access_token
 
@@ -27,6 +28,12 @@ class BizFlyBillingClient(object):
 
     def subscription(self) -> Subscription:
         return self._create_service(Subscription)
+
+    def billing_model(self) -> BillingModel:
+        return self._create_service(BillingModel)
+
+    def pricing_model(self) -> PricingModel:
+        return self._create_service(PricingModel)
 
     def _create_service(self, service_type: type(Service)) -> Service:
         service = service_type(self.__tenant_id,

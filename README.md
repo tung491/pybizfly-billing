@@ -61,6 +61,7 @@ bởi [BizFly Cloud Cloud Server API](https://support.bizflycloud.vn/api/cloudse
 
 - [Truy vấn thông tin các kế hoạch sản phẩm](#plan)
 - [Truy vấn thông tin, đăng ký và sử dụng tài nguyên](#subscription)
+- [Truy vấn thông tin tài khoản](#account)
 
 ## Sử dụng
 
@@ -196,3 +197,22 @@ client = pybilling.BizFlyBillingClient(
 subscription_service = client.subscription()
 print(subscription_service.upgrade_trial('data_transfer_trial', 'data_tf_01', '2bfe6e25-2a69-40ba-abd9-fa364cbecc7f'))
 ``` 
+
+<h3 id="account">Tài khoản</h3>
+PyBizfly Billing hỗ trợ truy vấn thông tin tài khoản thông qua token admin.
+
+[⬆ Quay lại Tính năng](#tính-năng)
+
+Ví dụ này biểu diễn cách liệt kê danh sách 25 tài khoản theo thời gian tạo với thứ tự đảo ngược.
+```python
+import pybilling
+
+client = pybilling.BizFlyBillingClient(
+    tenant_id='5a72fb63165b4d3fada838da329b94a3',
+    api_url='https://dev-billing.bizflycloud.vn',
+    access_token='gAAAAABf9X2QuVi1tRJAoCt8jypeKRMlQ96q5sZJgW66XtAlkcbw8aAySJVLzcPHBqZEE8S1RrgYIMf5GsjJ38Tu8gaGiz_35vbyTOfLEDdsJxLBVcmWoVQJ6GkZ8aaYNz098SL5-6ar1xStpQqxIKPoJ9UOb2_T0m5g8HnN0gxzfKmTP9vzIWk'
+)
+accounts = client.account().list(sort='_created', ascending=False, limit=25)
+
+print(accounts)
+```

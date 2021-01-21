@@ -11,7 +11,7 @@ setuptools.setup(
     description="BizFly Cloud Billing system version 4th Client in Python",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/pypa/sampleproject",
+    url="https://github.com/milkandpie/pybizfly-billing.git",
     packages=setuptools.find_packages(),
     install_requires=[
         'requests>=2.24.0',

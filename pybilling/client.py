@@ -35,6 +35,9 @@ class BizFlyBillingClient(object):
     def pricing_model(self) -> PricingModel:
         return self._create_service(PricingModel)
 
+    def account(self) -> Account:
+        return self._create_service(Account)
+
     def _create_service(self, service_type: type(Service)) -> Service:
         service = service_type(self.__tenant_id,
                                api_url=self.__api_url, auth_token=self.__access_token, client=self)

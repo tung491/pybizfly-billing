@@ -5,17 +5,19 @@
 
 Cài đặt sử dụng thông qua**pip**
 
-    pip install pybizfly_billing
+    pip install git+https://github.com/milkandpie/pybizfly-billing.git
 
 hoặc thông quan mã nguồn
-
+    
+    git clone https://github.com/milkandpie/pybizfly-billing.git
+    cd pybizfly-billing   
     python setup.py install 
 
 ## Yêu cầu
 
 - Thông tin cấu hình Openstack được sử dụng cho Billing v4.
-- Id của khách hàng (tenant_id)
-- API url của Billing v4
+- Id của khách hàng (tenant_id).
+- API url của Billing v4.
 
 ## Cấu hình
 Các giá trị trong `config` có thể lấy từ môi trường hoặc trực tiếp truyền vào khi khởi tạo client.
@@ -27,7 +29,7 @@ import pybilling
 
 client = pybilling.BizFlyBillingClient(
     tenant_id='5a72fb63165b4d3fada838da329b94a3',
-    api_url='https://dev-billing.bizflycloud.vn'
+    api_url='https://dev-billing.bizflycloud.vn',
     config={
         "OPENSTACK_AUTH_URL": "",
         "KEYSTONE_TENANT_ADMIN": "",
@@ -162,7 +164,7 @@ client = pybilling.BizFlyBillingClient(
 )
 
 subscription_service = client.subscription()
-print(subscription_service.list(embedded=['usages'], filter_str='plan.name==machine_a_month'))
+print(subscription_service.list(embedded=['usages'], filter_str='plan.summary==machine_a_month'))
 ```
 
 

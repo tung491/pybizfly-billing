@@ -20,9 +20,10 @@ hoặc thông quan mã nguồn
 - API url của Billing v4.
 
 ## Cấu hình
-Các giá trị trong `config` có thể lấy từ môi trường hoặc trực tiếp truyền vào khi khởi tạo client.
+Các giá trị trong `openstack_credential` có thể lấy từ môi trường hoặc trực tiếp truyền vào khi khởi tạo client.
 
 Giá trị `api_url` là url api Billing v4. Có thể đặt biến môi trường với khóa là `BILLING_API_URL`. Nếu không, giá trị mặc định là [BILLING API V4](https://billing.bizflycloud.vn/api/v4/)
+
 
 ```python  
 import pybilling
@@ -30,7 +31,7 @@ import pybilling
 client = pybilling.BizFlyBillingClient(
     tenant_id='5a72fb63165b4d3fada838da329b94a3',
     api_url='https://dev-billing.bizflycloud.vn',
-    config={
+    openstack_credential={
         "OPENSTACK_AUTH_URL": "",
         "KEYSTONE_TENANT_ADMIN": "",
         "OPENSTACK_DEFAULT_PROJECT_DOMAIN_NAME": "",
@@ -49,6 +50,17 @@ import pybilling
 
 client = pybilling.BizFlyBillingClient(
     tenant_id='5a72fb63165b4d3fada838da329b94a3',
+    api_url='https://dev-billing.bizflycloud.vn'
+    access_token='gAAAAABf9X2QuVi1tRJAoCt8jypeKRMlQ96q5sZJgW66XtAlkcbw8aAySJVLzcPHBqZEE8S1RrgYIMf5GsjJ38Tu8gaGiz_35vbyTOfLEDdsJxLBVcmWoVQJ6GkZ8aaYNz098SL5-6ar1xStpQqxIKPoJ9UOb2_T0m5g8HnN0gxzfKmTP9vzIWk'
+)
+```
+
+Nếu sử dụng token của người sử dụng, tenant_id được truy xuất từ thông tin trong token, do đó không cần truyền vào như ví dụ dưới.
+
+```python  
+import pybilling
+
+client = pybilling.BizFlyBillingClient(
     api_url='https://dev-billing.bizflycloud.vn'
     access_token='gAAAAABf9X2QuVi1tRJAoCt8jypeKRMlQ96q5sZJgW66XtAlkcbw8aAySJVLzcPHBqZEE8S1RrgYIMf5GsjJ38Tu8gaGiz_35vbyTOfLEDdsJxLBVcmWoVQJ6GkZ8aaYNz098SL5-6ar1xStpQqxIKPoJ9UOb2_T0m5g8HnN0gxzfKmTP9vzIWk'
 )

@@ -1,5 +1,6 @@
 from typing import List
 
+from pybilling.commons import Embeddable
 from pybilling.constants import BILLING_MODEL_RESOURCE_ENDPOINT
 from ._parameter_gettable import ParameterGettable
 from ._parameter_listable import ParameterListable
@@ -7,7 +8,7 @@ from ._parameter_patchable import ParameterPatchable
 from ._segregation import (Creatable, Deletable)
 
 
-class BillingModel(ParameterGettable, ParameterListable, Creatable, ParameterPatchable, Deletable):
+class BillingModel(ParameterGettable, ParameterListable, Creatable, ParameterPatchable, Deletable, Embeddable):
     def _create_endpoint(self) -> str:
         return BILLING_MODEL_RESOURCE_ENDPOINT
 
@@ -24,3 +25,6 @@ class BillingModel(ParameterGettable, ParameterListable, Creatable, ParameterPat
             kwargs['auth_required'] = False
 
         return super(BillingModel, self).list(embedded, limit, page, sort, ascending, filter_str, *args, **kwargs)
+
+    def embeddable(self) -> List[str]:
+        return ['plans']

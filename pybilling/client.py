@@ -7,12 +7,12 @@ from pybilling.utils.authenticator import Authenticator
 class BizFlyBillingClient(object):
     def __init__(self, tenant_id: str = None,
                  access_token: str = None, with_access_token: bool = True,
-                 api_url: str = None, config: dict = None):
+                 api_url: str = None, config: dict = None, openstack_credential: dict = None):
         load_dotenv()
         self.__tenant_id = tenant_id
         self.__config = config
         self.__api_url = api_url
-        self.__authenticator = Authenticator(config)
+        self.__authenticator = Authenticator(openstack_credential)
 
         if not access_token and with_access_token:
             access_token = self.__authorize()

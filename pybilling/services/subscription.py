@@ -4,13 +4,14 @@ from pybilling.constants import (SUBSCRIPTION_RESOURCE_ENDPOINT,
                                  HANOI_REGION,
                                  SUBSCRIBE_ACTION, UPDATE_ACTION, RENEW_ACTION, CLOSE_ACTION,
                                  DEFAULT_CATEGORY_CODE)
-from pybilling.utils import stringfy_time
+from pybilling.utils import stringfy_time, List
 from ._parameter_gettable import ParameterGettable
 from ._parameter_listable import ParameterListable
 from ._segregation import (Creatable, Patchable)
+from .billing_model import Embeddable
 
 
-class Subscription(ParameterGettable, ParameterListable, Creatable, Patchable):
+class Subscription(ParameterGettable, ParameterListable, Creatable, Patchable, Embeddable):
     def _create_endpoint(self) -> str:
         return SUBSCRIPTION_RESOURCE_ENDPOINT
 
@@ -147,3 +148,6 @@ class Subscription(ParameterGettable, ParameterListable, Creatable, Patchable):
         self._request_body = [item, *many]
         self._add_sub_endpoint('upgrade')
         return super(Subscription, self).update(*args, **kwargs)
+
+    def embeddable(self) -> List[str]:
+        return ['plan', 'account', 'usages']

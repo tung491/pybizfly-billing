@@ -1,4 +1,6 @@
-from pybilling.constants import CREATE
+from pybilling.constants import (CREATE,
+                                 OPENSTACK_AUTH_URL, OPENSTACK_DEFAULT_USER_DOMAIN_NAME,
+                                 OPENSTACK_DEFAULT_PROJECT_DOMAIN_NAME, KEYSTONE_AUTH_PLUGIN)
 from .exceptions import (AuthenticationException, BizFlyClientException)
 from .helper import env_or_dict
 from .https import HttpRequest
@@ -6,24 +8,30 @@ from .log import log
 
 
 class Authenticator(object):
-    def __init__(self, config: dict = None):
-        if not config:
-            config = {}
-        self._config = config
+    def __init__(self, openstack_credential: dict = None):
+
+        if not openstack_credential:
+            openstack_credential = {}
+        self._config = openstack_credential
+
         self.request_status = None
         self.new_token_arrived = False
 
     def request(self) -> str:
         try:
-            auth_url = env_or_dict(self._config, 'OPENSTACK_AUTH_URL')
-
-            project_name = env_or_dict(self._config, 'KEYSTONE_TENANT_ADMIN')
-            project_domain_name = env_or_dict(self._config, 'OPENSTACK_DEFAULT_PROJECT_DOMAIN_NAME')
-            method = env_or_dict(self._config, 'KEYSTONE_AUTH_PLUGIN')
+            auth_url = env_or_dict(self._config, 'OPENSTACK_AUTH_URL', False) or OPENSTACK_AUTH_URL
 
             username = env_or_dict(self._config, 'KEYSTONE_USER_ADMIN')
             password = env_or_dict(self._config, 'KEYSTONE_PASSWORD_ADMIN')
-            user_domain_name = env_or_dict(self._config, 'OPENSTACK_DEFAULT_USER_DOMAIN_NAME')
+            user_domain_name = env_or_dict(
+                self._config, 'OPENSTACK_DEFAULT_USER_DOMAIN_NAME', False
+            ) or OPENSTACK_DEFAULT_USER_DOMAIN_NAME
+
+            project_name = env_or_dict(self._config, 'KEYSTONE_TENANT_ADMIN') or username
+            project_domain_name = env_or_dict(
+                self._config, 'OPENSTACK_DEFAULT_PROJECT_DOMAIN_NAME', False
+            ) or OPENSTACK_DEFAULT_PROJECT_DOMAIN_NAME
+            method = env_or_dict(self._config, 'KEYSTONE_AUTH_PLUGIN', False) or KEYSTONE_AUTH_PLUGIN
 
         except ValueError as e:
             log.error('Authenticated config error. Insert access token or set up authenticated config values.')

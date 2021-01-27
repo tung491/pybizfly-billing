@@ -151,3 +151,17 @@ class Subscription(ParameterGettable, ParameterListable, Creatable, Patchable, E
 
     def embeddable(self) -> List[str]:
         return ['plan', 'account', 'usages']
+
+    def unsubscribe(self, resource_ref: str,
+                    region_name: str = HANOI_REGION, executed_at: datetime = datetime.datetime.utcnow(),
+                    many: list = None, *args, **kwargs) -> list:
+        many = many or []
+        item = {
+            'resource_ref': resource_ref,
+            'executed_at': stringfy_time(executed_at),
+            'region_name': region_name,
+        }
+
+        self._request_body = [item, *many]
+        self._add_sub_endpoint('unsubscribe')
+        return super(Subscription, self).create(*args, **kwargs)

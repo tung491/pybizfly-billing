@@ -30,7 +30,7 @@ import pybilling
 
 client = pybilling.BizFlyBillingClient(
     tenant_id='5a72fb63165b4d3fada838da329b94a3',
-    api_url='https://dev-billing.bizflycloud.vn',
+    api_url='https://dev-billing.bizflycloud.vn/api/v4',
     openstack_credential={
         "OPENSTACK_AUTH_URL": "",
         "KEYSTONE_TENANT_ADMIN": "",
@@ -50,7 +50,7 @@ import pybilling
 
 client = pybilling.BizFlyBillingClient(
     tenant_id='5a72fb63165b4d3fada838da329b94a3',
-    api_url='https://dev-billing.bizflycloud.vn'
+    api_url='https://dev-billing.bizflycloud.vn/api/v4'
     access_token='gAAAAABf9X2QuVi1tRJAoCt8jypeKRMlQ96q5sZJgW66XtAlkcbw8aAySJVLzcPHBqZEE8S1RrgYIMf5GsjJ38Tu8gaGiz_35vbyTOfLEDdsJxLBVcmWoVQJ6GkZ8aaYNz098SL5-6ar1xStpQqxIKPoJ9UOb2_T0m5g8HnN0gxzfKmTP9vzIWk'
 )
 ```
@@ -61,7 +61,7 @@ Nếu sử dụng token của người sử dụng, tenant_id được truy xu�
 import pybilling
 
 client = pybilling.BizFlyBillingClient(
-    api_url='https://dev-billing.bizflycloud.vn'
+    api_url='https://dev-billing.bizflycloud.vn/api/v4'
     access_token='gAAAAABf9X2QuVi1tRJAoCt8jypeKRMlQ96q5sZJgW66XtAlkcbw8aAySJVLzcPHBqZEE8S1RrgYIMf5GsjJ38Tu8gaGiz_35vbyTOfLEDdsJxLBVcmWoVQJ6GkZ8aaYNz098SL5-6ar1xStpQqxIKPoJ9UOb2_T0m5g8HnN0gxzfKmTP9vzIWk'
 )
 ```
@@ -116,7 +116,7 @@ import pybilling
 
 client = pybilling.BizFlyBillingClient(
     tenant_id='5a72fb63165b4d3fada838da329b94a3',
-    api_url='https://dev-billing.bizflycloud.vn',
+    api_url='https://dev-billing.bizflycloud.vn/api/v4',
     access_token='gAAAAABf9X2QuVi1tRJAoCt8jypeKRMlQ96q5sZJgW66XtAlkcbw8aAySJVLzcPHBqZEE8S1RrgYIMf5GsjJ38Tu8gaGiz_35vbyTOfLEDdsJxLBVcmWoVQJ6GkZ8aaYNz098SL5-6ar1xStpQqxIKPoJ9UOb2_T0m5g8HnN0gxzfKmTP9vzIWk'
 )
 
@@ -131,7 +131,7 @@ import pybilling
 
 client = pybilling.BizFlyBillingClient(
     tenant_id='5a72fb63165b4d3fada838da329b94a3',
-    api_url='https://dev-billing.bizflycloud.vn',
+    api_url='https://dev-billing.bizflycloud.vn/api/v4',
     access_token='gAAAAABf9X2QuVi1tRJAoCt8jypeKRMlQ96q5sZJgW66XtAlkcbw8aAySJVLzcPHBqZEE8S1RrgYIMf5GsjJ38Tu8gaGiz_35vbyTOfLEDdsJxLBVcmWoVQJ6GkZ8aaYNz098SL5-6ar1xStpQqxIKPoJ9UOb2_T0m5g8HnN0gxzfKmTP9vzIWk'
 )
 
@@ -145,7 +145,7 @@ import pybilling
 
 client = pybilling.BizFlyBillingClient(
     tenant_id='5a72fb63165b4d3fada838da329b94a3',
-    api_url='https://dev-billing.bizflycloud.vn',
+    api_url='https://dev-billing.bizflycloud.vn/api/v4',
     access_token='gAAAAABf9X2QuVi1tRJAoCt8jypeKRMlQ96q5sZJgW66XtAlkcbw8aAySJVLzcPHBqZEE8S1RrgYIMf5GsjJ38Tu8gaGiz_35vbyTOfLEDdsJxLBVcmWoVQJ6GkZ8aaYNz098SL5-6ar1xStpQqxIKPoJ9UOb2_T0m5g8HnN0gxzfKmTP9vzIWk'
 )
 
@@ -159,7 +159,7 @@ import pybilling
 
 client = pybilling.BizFlyBillingClient(
     tenant_id='5a72fb63165b4d3fada838da329b94a3',
-    api_url='https://dev-billing.bizflycloud.vn',
+    api_url='https://dev-billing.bizflycloud.vn/api/v4',
     access_token='gAAAAABf9X2QuVi1tRJAoCt8jypeKRMlQ96q5sZJgW66XtAlkcbw8aAySJVLzcPHBqZEE8S1RrgYIMf5GsjJ38Tu8gaGiz_35vbyTOfLEDdsJxLBVcmWoVQJ6GkZ8aaYNz098SL5-6ar1xStpQqxIKPoJ9UOb2_T0m5g8HnN0gxzfKmTP9vzIWk'
 )
 
@@ -172,7 +172,7 @@ import pybilling
 
 client = pybilling.BizFlyBillingClient(
     tenant_id='5a72fb63165b4d3fada838da329b94a3',
-    api_url='https://dev-billing.bizflycloud.vn',
+    api_url='https://dev-billing.bizflycloud.vn/api/v4',
     access_token='gAAAAABf9X2QuVi1tRJAoCt8jypeKRMlQ96q5sZJgW66XtAlkcbw8aAySJVLzcPHBqZEE8S1RrgYIMf5GsjJ38Tu8gaGiz_35vbyTOfLEDdsJxLBVcmWoVQJ6GkZ8aaYNz098SL5-6ar1xStpQqxIKPoJ9UOb2_T0m5g8HnN0gxzfKmTP9vzIWk'
 )
 
@@ -187,7 +187,7 @@ import pybilling
 
 client = pybilling.BizFlyBillingClient(
     tenant_id='5a72fb63165b4d3fada838da329b94a3',
-    api_url='https://dev-billing.bizflycloud.vn',
+    api_url='https://dev-billing.bizflycloud.vn/api/v4',
     access_token='gAAAAABf9X2QuVi1tRJAoCt8jypeKRMlQ96q5sZJgW66XtAlkcbw8aAySJVLzcPHBqZEE8S1RrgYIMf5GsjJ38Tu8gaGiz_35vbyTOfLEDdsJxLBVcmWoVQJ6GkZ8aaYNz098SL5-6ar1xStpQqxIKPoJ9UOb2_T0m5g8HnN0gxzfKmTP9vzIWk'
 )
 
@@ -202,12 +202,26 @@ import pybilling
 
 client = pybilling.BizFlyBillingClient(
     tenant_id='5a72fb63165b4d3fada838da329b94a3',
-    api_url='https://dev-billing.bizflycloud.vn',
+    api_url='https://dev-billing.bizflycloud.vn/api/v4',
     access_token='gAAAAABf9X2QuVi1tRJAoCt8jypeKRMlQ96q5sZJgW66XtAlkcbw8aAySJVLzcPHBqZEE8S1RrgYIMf5GsjJ38Tu8gaGiz_35vbyTOfLEDdsJxLBVcmWoVQJ6GkZ8aaYNz098SL5-6ar1xStpQqxIKPoJ9UOb2_T0m5g8HnN0gxzfKmTP9vzIWk'
 )
 
 subscription_service = client.subscription()
 print(subscription_service.upgrade_trial('data_transfer_trial', 'data_tf_01', '2bfe6e25-2a69-40ba-abd9-fa364cbecc7f'))
+```
+
+Ví dụ dưới đây biểu diễn cách đóng tất cả các tài nguyên đã đăng ký theo id tài nguyên (resource_ref), ở region HaNoi
+```python
+import pybilling
+
+client = pybilling.BizFlyBillingClient(
+    tenant_id='5a72fb63165b4d3fada838da329b94a3',
+    api_url='https://dev-billing.bizflycloud.vn/api/v4',
+    access_token='gAAAAABf9X2QuVi1tRJAoCt8jypeKRMlQ96q5sZJgW66XtAlkcbw8aAySJVLzcPHBqZEE8S1RrgYIMf5GsjJ38Tu8gaGiz_35vbyTOfLEDdsJxLBVcmWoVQJ6GkZ8aaYNz098SL5-6ar1xStpQqxIKPoJ9UOb2_T0m5g8HnN0gxzfKmTP9vzIWk'
+)
+
+subscription_service = client.subscription()
+print(subscription_service.unsubscribe('07625ccc-6f9f-c065-ba03-196db7sb7a55', region_name='HaNoi'))
 ``` 
 
 <h3 id="account">Tài khoản</h3>
@@ -221,7 +235,7 @@ import pybilling
 
 client = pybilling.BizFlyBillingClient(
     tenant_id='5a72fb63165b4d3fada838da329b94a3',
-    api_url='https://dev-billing.bizflycloud.vn',
+    api_url='https://dev-billing.bizflycloud.vn/api/v4',
     access_token='gAAAAABf9X2QuVi1tRJAoCt8jypeKRMlQ96q5sZJgW66XtAlkcbw8aAySJVLzcPHBqZEE8S1RrgYIMf5GsjJ38Tu8gaGiz_35vbyTOfLEDdsJxLBVcmWoVQJ6GkZ8aaYNz098SL5-6ar1xStpQqxIKPoJ9UOb2_T0m5g8HnN0gxzfKmTP9vzIWk'
 )
 accounts = client.account().list(sort='_created', ascending=False, limit=25)

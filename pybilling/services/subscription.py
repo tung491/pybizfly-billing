@@ -167,7 +167,7 @@ class Subscription(ParameterGettable, ParameterListable, Creatable, Patchable, E
         self._add_sub_endpoint('unsubscribe')
         return super(Subscription, self).create(*args, **kwargs)
 
-    def update_related_ref(self, id_: str, related_ref: str, many: list = None, *args, **kwargs):
+    def update(self, id_: str, related_ref: str, many: list = None, *args, **kwargs):
         many = many or []
         items = [{
             'id': id_,

@@ -16,7 +16,7 @@ class Subscription(ParameterGettable, ParameterListable, Creatable, Patchable, E
         return SUBSCRIPTION_RESOURCE_ENDPOINT
 
     def subscribe(self, plan_name: str,
-                  resource_name: str, resource_ref: str,
+                  resource_name: str, resource_ref: str, related_ref: str = None,
                   quantity: float = 0, executed_at: datetime.datetime = None,
                   region_name: str = None, category_code: str = None,
                   many: list = None, *args, **kwargs) -> list:
@@ -28,7 +28,7 @@ class Subscription(ParameterGettable, ParameterListable, Creatable, Patchable, E
 
         return self.create(plan_name, resource_name, resource_ref, action,
                            quantity=quantity, executed_at=executed_at, region_name=region_name,
-                           category_code=category_code, many=many, *args, **kwargs)
+                           related_ref=related_ref, category_code=category_code, many=many, *args, **kwargs)
 
     def log(self, plan_name: str,
             resource_name: str, resource_ref: str,
@@ -78,7 +78,7 @@ class Subscription(ParameterGettable, ParameterListable, Creatable, Patchable, E
     def create(self, plan_name: str,
                resource_name: str, resource_ref: str, action: str,
                quantity: int, executed_at: datetime.datetime,
-               region_name: str, category_code: str,
+               region_name: str, category_code: str, related_ref: str = "",
                many: list = None, *args, **kwargs) -> list:
         many = many or []
 
@@ -92,6 +92,7 @@ class Subscription(ParameterGettable, ParameterListable, Creatable, Patchable, E
                 'plan_name': plan_name,
                 'resource_name': resource_name,
                 'resource_ref': resource_ref,
+                'related_ref': related_ref,
                 'quantity': quantity,
                 'action': action,
                 'executed_at': stringfy_time(executed_at),
@@ -165,3 +166,13 @@ class Subscription(ParameterGettable, ParameterListable, Creatable, Patchable, E
         self._request_body = [item, *many]
         self._add_sub_endpoint('unsubscribe')
         return super(Subscription, self).create(*args, **kwargs)
+
+    def update_related_ref(self, id_: str, related_ref: str, many: list = None, *args, **kwargs):
+        many = many or []
+        items = [{
+            'id': id_,
+            'related_ref': related_ref,
+        }, *many]
+        self._request_body = items
+        return super(Subscription, self).update(*args, **kwargs)
+
